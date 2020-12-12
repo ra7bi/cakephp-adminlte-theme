@@ -86,8 +86,27 @@
           </table>
         </div>
         <!-- /.box-body -->
+
+        <!-- pagination -->
+<div class="container">
+    <div class="vertical-center-row">
+            <nav aria-label="Page navigation example">
+             <ul class="pagination">
+                <?= $this->Paginator->first('<< ' . __('first')) ?>
+                <?= $this->Paginator->prev('< ' . __('previous')) ?>
+                <?= $this->Paginator->numbers() ?>
+                <?= $this->Paginator->next(__('next') . ' >') ?>
+                <?= $this->Paginator->last(__('last') . ' >>') ?>
+            </ul>
+        </nav>
+        <p><?= $this->Paginator->counter(__('Page {{ '{{' }}page{{ '}}' }} of {{ '{{' }}pages{{ '}}' }}, showing {{ '{{' }}current{{ '}}' }} record(s) out of {{ '{{' }}count{{ '}}' }} total')) ?></p>
       </div>
+    </div>
+     <!-- End pagination -->
+  </div>
       <!-- /.box -->
     </div>
   </div>
 </section>
+
+

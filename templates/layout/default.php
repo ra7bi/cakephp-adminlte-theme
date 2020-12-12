@@ -10,6 +10,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <?php echo $this->Html->css('AdminLTE./bower_components/bootstrap/dist/css/bootstrap.min'); ?>
+  <?php echo $this->Html->css('AdminLTE./bower_components/select2/dist/css/select2'); ?>
   <!-- Font Awesome -->
   <?php echo $this->Html->css('AdminLTE./bower_components/font-awesome/css/font-awesome.min'); ?>
   <!-- Ionicons -->
@@ -19,6 +20,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <?php echo $this->Html->css('AdminLTE.skins/skin-'. Configure::read('Theme.skin') .'.min'); ?>
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,7 +35,7 @@
   <?php echo $this->fetch('css'); ?>
 
 </head>
-<body class="hold-transition skin-<?php echo Configure::read('Theme.skin'); ?> sidebar-mini">
+<body class="hold-transition skin-<?php echo Configure::read('Theme.skin'); ?> fixed sidebar-mini">
 <div class="wrapper">
 
   <header class="main-header">
@@ -72,7 +74,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 3 -->
+<!-- jQuery 3 -->select2.full.min.js"
 <?php echo $this->Html->script('AdminLTE./bower_components/jquery/dist/jquery.min'); ?>
 <!-- Bootstrap 3.3.7 -->
 <?php echo $this->Html->script('AdminLTE./bower_components/bootstrap/dist/js/bootstrap.min'); ?>
@@ -83,18 +85,24 @@
 <!-- FastClick -->
 <?php echo $this->Html->script('AdminLTE./bower_components/fastclick/lib/fastclick'); ?>
 
+<?php echo $this->Html->script('cloneData'); ?>
+
+<?php echo $this->Html->script('AdminLTE./bower_components/select2/dist/js/select2.full.min'); ?>
+
 <?php echo $this->fetch('script'); ?>
 
 <?php echo $this->fetch('scriptBottom'); ?>
 
 <script type="text/javascript">
     $(document).ready(function(){
+      <?php if($this->request->getParam('controller') != 'Invoices'): ?>
+      $('.select2').select2()
         $(".navbar .menu").slimscroll({
             height: "200px",
             alwaysVisible: false,
             size: "3px"
         }).css("width", "100%");
-        
+      <?php endif; ?>
         var a = $('a[href="<?php echo $this->Url->build() ?>"]');
         if (!a.parent().hasClass('treeview') && !a.parent().parent().hasClass('pagination')) {
             a.parent().addClass('active').parents('.treeview').addClass('active');

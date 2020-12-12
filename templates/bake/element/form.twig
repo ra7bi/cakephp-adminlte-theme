@@ -65,7 +65,8 @@
 
 {%- if associations.BelongsToMany %}
     {%- for assocName, assocData in associations.BelongsToMany %}
-                echo $this->Form->control('{{ assocData.property }}._ids', ['options' => ${{ assocData.variable }}]);
+            
+                echo $this->Form->control('{{ assocData.property }}._ids', ['options' => ${{ assocData.variable }},'multiple '=>'multiple','multiple' => true]);
     {{- "\n" }}
     {%- endfor %}
 {% endif %}
