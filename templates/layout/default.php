@@ -96,7 +96,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
       <?php if($this->request->getParam('controller') != 'Invoices'): ?>
-      $('.select2').select2()
+      // $('.select2').select2()
         $(".navbar .menu").slimscroll({
             height: "200px",
             alwaysVisible: false,
